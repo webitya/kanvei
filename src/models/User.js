@@ -9,6 +9,13 @@ const userSchema = new mongoose.Schema(
       default: () => nanoid(10),
     },
 
+    username: {
+      type: String,
+      unique: true,
+      sparse: true,
+      trim: true,
+    },
+
     email: {
       type: String,
       unique: true,
