@@ -9,10 +9,21 @@ import 'swiper/css/navigation';
 import React from 'react';
 
 const Images = [
-  "https://media.istockphoto.com/id/1585147665/vector/set-of-realistic-clothes-shoes-hats-yellow-items-of-men-and-women-wardrobe.jpg?s=1024x1024&w=is&k=20&c=496cYblLXdydsTJhNBPwnvhMig9EW9ELLxES5pKDmVQ=",
-  "https://media.istockphoto.com/id/1195942083/photo/woman-neck-with-hand-with-many-bracelets.jpg?s=2048x2048&w=is&k=20&c=mxf4YrIlsfZoDGB39FWG2S_NbC_acY4T8qQV3IdHIOg=",
-  "https://media.istockphoto.com/id/1542950663/vector/super-sale-banner-template-design-for-web-or-social-media-discount-25-off.jpg?s=2048x2048&w=is&k=20&c=0ZtPgP8QekHil0sG7TMQHZJ0I2WbAGDVmFDu42geB3w=",
-  "https://plus.unsplash.com/premium_vector-1728305338802-7c9f8c2a52ea?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  {
+    src: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    title: "Premium Fashion Collection",
+    description: "Discover the latest trends in fashion"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+    title: "Exclusive Accessories",
+    description: "Complete your look with our curated accessories"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2115&q=80",
+    title: "Summer Sale - Up to 70% Off",
+    description: "Don't miss out on our biggest sale of the year"
+  }
 ];
 
 const Carousel = () => {
@@ -46,12 +57,18 @@ const Carousel = () => {
       >
         {Images.map((img, i) => (
           <SwiperSlide key={i}>
-            <div className="w-full h-[220px] sm:h-[300px] md:h-[400px] lg:h-[460px] flex justify-center items-center">
+            <div className="relative w-full h-[220px] sm:h-[300px] md:h-[400px] lg:h-[460px] overflow-hidden rounded-md">
               <img
-                src={img}
-                alt={`slide-${i}`}
-                className="max-h-full w-auto object-contain rounded-md"
+                src={img.src}
+                alt={img.title}
+                className="w-full h-full object-cover"
               />
+              <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                <div className="text-center text-white px-4">
+                  <h2 className="text-2xl md:text-4xl font-bold mb-2">{img.title}</h2>
+                  <p className="text-sm md:text-lg">{img.description}</p>
+                </div>
+              </div>
             </div>
           </SwiperSlide>
         ))}
